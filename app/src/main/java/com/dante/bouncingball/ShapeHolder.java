@@ -12,7 +12,7 @@ import android.graphics.drawable.shapes.Shape;
  */
 
 public class ShapeHolder {
-    private float x = 0, y = 0;
+    private float x, y;
     private ShapeDrawable shape;
     private int color;
     private RadialGradient gradient;

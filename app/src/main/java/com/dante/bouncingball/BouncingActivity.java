@@ -126,22 +126,28 @@ public class BouncingActivity extends AppCompatActivity {
         }
 
         private ShapeHolder addBall(float x, float y) {
+            //绘制一个宽高50px的椭圆球
             OvalShape circle = new OvalShape();
             circle.resize(50f, 50f);
+            //用Holder封装小球
             ShapeDrawable drawable = new ShapeDrawable(circle);
             ShapeHolder shapeHolder = new ShapeHolder(drawable);
-            shapeHolder.setX(x - 25f);
-            shapeHolder.setY(y - 25f);
+            shapeHolder.setX(x - 25f);//微调小球
+            shapeHolder.setY(y - 25f);//使之向手指左上角移动一点
+            //创建随机颜色
             int red = (int) (Math.random() * 255);
             int green = (int) (Math.random() * 255);
             int blue = (int) (Math.random() * 255);
             int color = 0xff000000 | red << 16 | green << 8 | blue;
             Paint paint = drawable.getPaint(); //new Paint(Paint.ANTI_ALIAS_FLAG);
             int darkColor = 0xff000000 | red / 4 << 16 | green / 4 << 8 | blue / 4;
+            //根据颜色创建渐变半径
             RadialGradient gradient = new RadialGradient(37.5f, 12.5f,
                     50f, color, darkColor, Shader.TileMode.CLAMP);
+            //给画笔设置上渐变
             paint.setShader(gradient);
-            shapeHolder.setPaint(paint);
+
+            shapeHolder.setPaint(paint);//暂时没用到
             balls.add(shapeHolder);
             return shapeHolder;
         }
